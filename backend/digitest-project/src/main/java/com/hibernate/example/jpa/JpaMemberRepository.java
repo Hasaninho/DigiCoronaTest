@@ -1,16 +1,17 @@
 package com.hibernate.example.jpa;
 
 
-import com.hibernate.example.VVP;
+import com.hibernate.example.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
-import java.util.Optional;
 
+@Transactional
 @Repository
 public class JpaMemberRepository {
 
@@ -20,13 +21,18 @@ public class JpaMemberRepository {
     @Autowired
     private EntityManager entityManager;
 
-    public List<VVP> findAll() {
+    public List<Member> findAll() {
 
-        TypedQuery<VVP> query = entityManager.createQuery("select r from VVP r",VVP.class);
+        TypedQuery<Member> query = entityManager.createQuery("select r from Member r", Member.class);
         return query.getResultList();
     }
 
-    public VVP find(String id) {
-        return entityManager.find(VVP.class, id);
+    public Member save(Member member){
+        entityManager.persist(member);
+        return member;
+    }
+
+    public Member find(String id) {
+        return entityManager.find(Member.class, id);
     }
 }

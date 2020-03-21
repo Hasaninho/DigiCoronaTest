@@ -26,7 +26,7 @@ import java.util.HashMap;
 @EnableJpaRepositories(
         entityManagerFactoryRef = "entityManagerFactory",
         transactionManagerRef = "transactionManager",
-        basePackages = { "com.hibernate.example.vvp" }
+        basePackages = { "com.hibernate.example.jpa" }
 )
 @EnableTransactionManagement
 public class DB2DbConfig {
