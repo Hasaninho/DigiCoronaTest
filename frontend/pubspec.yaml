@@ -1,5 +1,5 @@
-name: digicoronatest
-description: A new Flutter application.
+name: antep_kicker
+description: Terminplaner für die Superkickers
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -23,6 +23,12 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
+  shared_preferences:
+  fluttertoast: ^3.0.3
+  firebase_core: ^0.4.4
+  # firebase_auth: ^0.15.4
+  # cloud_firestore: ^0.13.2+1
+  firebase_messaging: ^6.0.9
 
 dev_dependencies:
   flutter_test:
