@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class Member {
 
     @Id
-    @Column(columnDefinition="INT(9)")
+    @Column(columnDefinition="INT")
     Integer id;
 
     @Column(columnDefinition="VARCHAR(512)")
@@ -24,7 +24,7 @@ public class Member {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
