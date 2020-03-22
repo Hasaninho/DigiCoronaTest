@@ -18,7 +18,7 @@ public class TestController {
     
 
     @RequestMapping("{id}")
-    public Member get(@PathVariable String id) {
+    public Member get(@PathVariable Integer id) {
         return jpaMemberRepository.find(id);
     }
 
