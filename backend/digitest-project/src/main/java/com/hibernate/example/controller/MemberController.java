@@ -46,12 +46,12 @@ public class MemberController {
     @PostMapping(value = "/createTestPatient", consumes = "application/json", produces = "application/json")
     public ResponseEntity createPatientData(@RequestBody PatientData patientData){
         Member member = new Member();
-        member.setId(patientData.getUserId());
+        //member.setId(patientData.getUserId());
         member.setStatus(patientData.getStatus());
 
         try {
             jpaMemberRepository.save(member);
-            return ResponseEntity.ok("successfully created TestPatient for "+ patientData.getUserId());
+            return ResponseEntity.ok("successfully created TestPatient for "+ member.getId());
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("could not create TestPatient");
