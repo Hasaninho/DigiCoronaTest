@@ -1,7 +1,6 @@
-import 'package:antep_kicker/splashscreen.dart';
-import 'package:antep_kicker/widget/overview.dart';
+import 'package:digicoronatest/splashscreen.dart';
+import 'package:digicoronatest/widget/overview.dart';
 import 'package:flutter/material.dart';
-import 'signuppage.dart';
 import 'widget/messaging_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

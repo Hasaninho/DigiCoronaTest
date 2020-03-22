@@ -1,4 +1,4 @@
-name: antep_kicker
+name: digicoronatest
 description: Terminplaner für die Superkickers
 
 # The following defines the version and build number for your application.
@@ -29,6 +29,7 @@ dependencies:
   # firebase_auth: ^0.15.4
   # cloud_firestore: ^0.13.2+1
   firebase_messaging: ^6.0.9
+  qrscan: ^0.2.17
 
 dev_dependencies:
   flutter_test:
