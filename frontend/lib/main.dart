@@ -1,3 +1,4 @@
+import 'package:digicoronatest/pages/arzthomepage.dart';
 import 'package:digicoronatest/splashscreen.dart';
 import 'package:digicoronatest/widget/overview.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: (RouteSettings settings) {
         if (settings.name == "/") {
           return MaterialPageRoute<bool>(
-            builder: (BuildContext context) => SplashScreen(),
+            builder: (BuildContext context) => MainPage(),
           );
         }
         if (settings.name == "/overview") {
@@ -25,6 +26,16 @@ class MyApp extends StatelessWidget {
 
           return MaterialPageRoute<bool>(
             builder: (BuildContext context) => Overview(arguments),
+          );
+        }
+        if (settings.name == "/splashscreen") {
+          return MaterialPageRoute<bool>(
+            builder: (BuildContext context) => SplashScreen(),
+          );
+        }
+        if (settings.name == "/arzthomepage") {
+          return MaterialPageRoute<bool>(
+            builder: (BuildContext context) => Arzthomepage(),
           );
         }
         return null;
@@ -48,9 +59,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MainPage extends StatelessWidget {
-  final String appTitle;
+  final String appTitle = "Digi Corona App";
 
-  const MainPage({this.appTitle});
+  const MainPage();
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +69,26 @@ class MainPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(appTitle),
       ),
-      body: MessagingWidget(),
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            MaterialButton(
+              color: Colors.blue,
+              child: Text("Starte Ärzte App"),
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, "/arzthomepage");
+              },
+            ),
+            MaterialButton(
+              color: Colors.green,
+              child: Text("Starte Patienten-App"),
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, "/splashscreen");
+              },
+            )
+          ],
+        ),
+      ),
     );
   }
 }

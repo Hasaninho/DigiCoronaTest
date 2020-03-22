@@ -43,7 +43,7 @@ class _SymptomspageState extends State<Symptomspage> {
           title: Text("Nun noch Symptome eintragen"),
         ),
         body: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 50.0),
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
           children: <Widget>[
             Janeinfragewidget(
                 booleanfactors, "halsschmerzen", "Haben Sie Halsschmerzen?"),
