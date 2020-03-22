@@ -19,6 +19,17 @@ public class Member {
     @Column(columnDefinition="VARCHAR(20)")
     String status;
 
+    @Column(columnDefinition = "VARCHAR(256)")
+    String fcmToken;
+
+    public String getFcmToken() {
+        return fcmToken;
+    }
+
+    public void setFcmToken(String fcmToken) {
+        this.fcmToken = fcmToken;
+    }
+
     public Integer getId() {
         return id;
     }
