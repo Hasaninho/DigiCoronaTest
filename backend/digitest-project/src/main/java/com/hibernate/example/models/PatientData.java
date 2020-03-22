@@ -1,24 +1,22 @@
 package com.hibernate.example.models;
 
-import org.springframework.data.relational.core.sql.In;
-
 public class PatientData {
-    private int userId;
-    private String status;
+    private String hashedPassword;
+    private String data;
 
-    public Integer getUserId() {
-        return userId;
+    public String getHashedPassword() {
+        return hashedPassword;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setHashedPassword(String hashedPassword) {
+        this.hashedPassword = hashedPassword;
     }
 
-    public String getStatus() {
-        return status;
+    public String getData() {
+        return data;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setData(String data) {
+        this.data = data;
     }
 }

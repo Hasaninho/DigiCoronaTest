@@ -10,10 +10,10 @@ public class Member {
     @Column(columnDefinition="INT")
     Integer id;
 
-    @Column(columnDefinition="VARCHAR(512)")
+    @Column(columnDefinition="TEXT")
     String data;
 
-    @Column(columnDefinition="VARCHAR(20)")
+    @Column(columnDefinition="VARCHAR(256)")
     String password;
 
     @Column(columnDefinition="VARCHAR(20)")
