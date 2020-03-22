@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 @Transactional
 @RestController
@@ -52,12 +53,15 @@ public class MemberController {
     }
 
     @PostMapping(value = "/updateStatus", consumes = "application/json", produces = "application/json")
-    public ResponseEntity updateStatus(@RequestBody PatientData patientData) {
+    public ResponseEntity updateStatus(@RequestBody PatientData patientData)  {
         Member member = new Member();
-        member.setId(patientData.getId());
+        Integer id = patientData.getId();
+        RestTemplate restTemplate = new RestTemplate();
+        member.setId(id);
         member.setData(patientData.getData());
         try {
             jpaMemberRepository.update(member);
+            restTemplate.postForLocation("https://kaskovi.de:8081/notify/"+id.toString(), member.getFcmtoken());
             return ResponseEntity.ok("successfully updated TestPatient for " + member.getId());
         } catch (Exception e) {
             e.printStackTrace();
