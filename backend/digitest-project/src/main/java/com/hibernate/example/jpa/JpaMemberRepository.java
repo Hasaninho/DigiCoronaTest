@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -32,7 +33,18 @@ public class JpaMemberRepository {
         return member;
     }
 
-    public Member find(String id) {
+    public Member update(Member member){
+        entityManager.merge(member);
+        return member;
+    }
+
+    public Member find(Integer id) {
         return entityManager.find(Member.class, id);
+    }
+
+    public String getStatus(Integer id) {
+        Query query = entityManager.createQuery("select r.status from Member r where r.id = :id");
+        query.setParameter("id",id);
+        return query.getSingleResult().toString();
     }
 }
