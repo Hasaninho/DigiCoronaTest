@@ -16,8 +16,8 @@ public class Member {
     @Column(columnDefinition="VARCHAR(256)")
     String password;
 
-    @Column(columnDefinition="VARCHAR(20)")
-    String status;
+    @Column(columnDefinition="VARCHAR(256)")
+    String fcmtoken;
 
     public Integer getId() {
         return id;
@@ -43,14 +43,12 @@ public class Member {
         this.password = password;
     }
 
-    public String getStatus() {
-        return status;
+    public String getFcmtoken() {
+        return fcmtoken;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setFcmtoken(String fcmtoken) {
+        this.fcmtoken = fcmtoken;
     }
-
-
 
 }

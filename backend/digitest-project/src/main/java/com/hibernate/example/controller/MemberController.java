@@ -54,11 +54,25 @@ public class MemberController {
     @PostMapping(value = "/updateStatus", consumes = "application/json", produces = "application/json")
     public ResponseEntity updateStatus(@RequestBody PatientData patientData) {
         Member member = new Member();
-        member.setId(patientData.getUserId());
-        member.setStatus(patientData.getStatus());
+        member.setId(patientData.getId());
+        member.setData(patientData.getData());
         try {
             jpaMemberRepository.update(member);
             return ResponseEntity.ok("successfully updated TestPatient for " + member.getId());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("could not create TestPatient");
+        }
+    }
+
+    @PostMapping(value = "/updatefcmtoken", consumes = "application/json", produces = "application/json")
+    public ResponseEntity updatefcmtoken(@RequestBody PatientData patientData) {
+        Member member = new Member();
+        member.setId(patientData.getId());
+        member.setFcmtoken(patientData.getFcmtoken());
+        try {
+            jpaMemberRepository.update(member);
+            return ResponseEntity.ok("successfully ufcmtoken updated TestPatient for " + member.getId());
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("could not create TestPatient");
