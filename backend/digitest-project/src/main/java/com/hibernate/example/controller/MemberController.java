@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.hibernate.example.Member;
 import com.hibernate.example.jpa.JpaMemberRepository;
-import com.hibernate.example.models.Credentials;
 import com.hibernate.example.models.PatientData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,22 +31,11 @@ public class MemberController {
         return jpaMemberRepository.findAll();
     }
 
-    @RequestMapping(value = "/id/{id}/data/{data}/password/{password}")
-    @ResponseBody
-    public Member postMember
-            (@PathVariable Integer id, @PathVariable String data, @PathVariable String password ) {
-        Member member = new Member();
-        member.setId(id);
-        member.setData(data);
-        member.setPassword(password);
-        return jpaMemberRepository.save(member);
-    }
-
-    @PostMapping(value = "/createTestPatient", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/register", consumes = "application/json", produces = "application/json")
     public ResponseEntity createPatientData(@RequestBody PatientData patientData){
         Member member = new Member();
-        //member.setId(patientData.getUserId());
-        member.setStatus(patientData.getStatus());
+        member.setPassword(patientData.getHashedPassword());
+        member.setData(patientData.getData());
 
         try {
             jpaMemberRepository.save(member);
@@ -58,13 +46,5 @@ public class MemberController {
         }
 
     }
-
-
-
-
-    //@RequestMapping(method=RequestMethod.POST)
-    //#public Route post(@RequestBody Route route) {
-      //  return jpaRouteRepository.save(route);
-    //}
-
+    
 }
