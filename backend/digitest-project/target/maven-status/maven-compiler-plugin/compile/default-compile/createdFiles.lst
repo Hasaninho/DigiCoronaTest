@@ -1,7 +1,0 @@
-com\hibernate\example\controller\MemberController.class
-com\hibernate\example\controller\TestController.class
-com\hibernate\example\Member.class
-com\hibernate\example\configuration\DB2DbConfig.class
-com\hibernate\example\ExampleApplication.class
-META-INF\spring-configuration-metadata.json
-com\hibernate\example\jpa\JpaMemberRepository.class

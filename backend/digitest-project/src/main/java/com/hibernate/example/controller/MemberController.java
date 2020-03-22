@@ -4,12 +4,13 @@ import java.util.List;
 
 import com.hibernate.example.Member;
 import com.hibernate.example.jpa.JpaMemberRepository;
+import com.hibernate.example.models.Credentials;
+import com.hibernate.example.models.PatientData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Transactional
 @RestController
@@ -41,6 +42,24 @@ public class MemberController {
         member.setPassword(password);
         return jpaMemberRepository.save(member);
     }
+
+    @PostMapping(value = "/createTestPatient", consumes = "application/json", produces = "application/json")
+    public ResponseEntity createPatientData(@RequestBody PatientData patientData){
+        Member member = new Member();
+        //member.setId(patientData.getUserId());
+        member.setStatus(patientData.getStatus());
+
+        try {
+            jpaMemberRepository.save(member);
+            return ResponseEntity.ok("successfully created TestPatient for "+ member.getId());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("could not create TestPatient");
+        }
+
+    }
+
+
 
 
     //@RequestMapping(method=RequestMethod.POST)

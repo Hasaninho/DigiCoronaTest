@@ -1,14 +1,13 @@
 package com.hibernate.example;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Member {
 
     @Id
-    @Column(columnDefinition="INT(9)")
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(columnDefinition="INT")
     Integer id;
 
     @Column(columnDefinition="VARCHAR(512)")
@@ -24,7 +23,7 @@ public class Member {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
